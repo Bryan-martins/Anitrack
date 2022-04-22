@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AniTrack - Home</title>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
+	</head>
+
+	<body class="fundo">
+		<header>
+			<nav>
+				<a class="logo" href="{% url 'index' %}">Logo</a>
+				<div class="mobile-menu">
+					<div class="line1"></div>
+					<div class="line2"></div>
+					<div class="line3"></div>
+				</div>
+				<ul class="nav-list">
+					<li><a href="{% url 'index' %}">Home</a></li>
+					<li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+					<li><a href="{% url 'sobre' %}">Sobre</a></li>
+					<li><a href="{% url 'contatos' %}">Contato</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'profile' user.id %}">Favoritos</a></li>
+					{% endif %}
+					<li>
+						<div>
+							{% if user.is_authenticated %}
+							<a id="linklogin" class="login" href="{% url 'account_login' %}">{{user.username}}</a>
+							<li>
+							<a href="{% url 'account_logout' %}">Sair</a>
+							</li>
+							{% else %}
+							<a id="linklogin" class="login" href="{% url 'account_login' %}">Login</a>
+							{% endif %}
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div class="index">
+			{% if user.is_authenticated %}
+			<h3 id="saudacao" class="index__titulo">Seja bem vindo(a), {{user.username}}!</h3>
+			{% else %}
+			<h3 id="saudacao" class="index__titulo">Seja bem vindo(a), visitante!</h3>
+			{% endif %}
+		</div>
+		<div class="container">
+			{% for bank in bank %}
+			<div class="card">
+				<a href="{% url 'anime' bank.id %}">
+					<img class="imgAnimes" src="{{ bank.imagens.url }}">
+					<div class="content">
+						<h3>{{bank.titulo_original}}</h3>
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+		</div>
+
+		<footer>
+			©
+			<script>
+				document.write(new Date().getFullYear())
+			</script> 
+			Copyright: AniTrack - Todos Direitos Reservados
+		</footer>
+		<script src="{% static 'js/mobile-navbar.js' %}"></script>
+		<script src="{% static 'js/home.js' %}"></script>
+	</body>
+</html>

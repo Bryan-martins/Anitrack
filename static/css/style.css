@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*
+img {
+	max-width: 100%;
+	height: auto;
+}
+*/
+
+textarea:focus, input:focus, select:focus, button:focus {
+	box-shadow: 0 0 0 0;
+	border: 0 none;
+	outline: 0;
+}
+
+body {
+	font-family: 'Fira Code', sans-serif;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+a:hover {
+	opacity: 0.7;
+}
+
+.logo {
+	background-image: url('../img/logo.png');
+	background-repeat: no-repeat;
+	display: block;
+	width: 149px;
+	height: 64px;
+	text-indent: -9999px;
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: #08121E;
+	height: 8vh;
+}
+
+main {
+	/* background: url("../img/bg.jpg") no-repeat center center; */
+	background: #192c46;
+	background-size: cover;
+	height: 88vh;
+	color: #fff;
+}
+
+main h1 {
+	padding: 5% 0 0 0;
+	text-align: center;
+}
+
+main h4 {
+	padding: 3% 0 5% 0;
+	text-align: center;
+}
+
+main p {
+	padding: 0 2%;
+	text-align: center;
+}
+
+footer {
+	position: fixed;
+	margin: auto;
+	padding: 4px 0;
+	width: 100%;
+	bottom: 0;
+	height: 4vh;
+	background-color: #192c46;
+	color: #fff;
+	text-align: center;
+}
+
+.nav-list {
+	list-style: none;
+	display: flex;
+}
+
+.nav-list li {
+	letter-spacing: 3px;
+	margin-left: 32px;
+}
+
+.mobile-menu {
+	display: none;
+	cursor: pointer;
+}
+
+.mobile-menu div {
+	width: 32px;
+	height: 2px;
+	background: #fff;
+	margin: 8px;
+	transition: 0.3s;
+}
+
+.login {
+	margin: 0 0 0 100px;
+}
+
+@media (max-width: 768px) {
+	body {
+		overflow-x: hidden;
+	}
+	main {
+		height: 98vh;
+	}
+	main p {
+		padding-left: 15px;
+   		padding-right: 15px;
+		text-align: justify;
+	}
+	footer {
+		padding-top: 300px;
+		padding-left: 5px;
+   		padding-right: 5px;
+		align-items: center;
+		height: 10vh;
+	}
+	.form__p {
+		text-align: center;
+	}
+	.nav-list {
+		position: absolute;
+		top: 8vh;
+		right: 0;
+		width: 50vw;
+		height: 92vh;
+		background: #23232e;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		transform: translateX(100%);
+		transition: transform 0.3s ease-in;
+	}
+	.nav-list li {
+		margin-left: 0;
+		opacity: 0;
+	}
+	.mobile-menu {
+		display: block;
+	}
+	.login {
+		margin: 0;
+	}
+	footer {
+		position: relative;
+	}
+}
+
+.nav-list.active {
+	transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.mobile-menu.active .line1 {
+	transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+	opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+	transform: rotate(45deg) translate(-5px, -7px);
+}
+
+/* Index */
+.index {
+	background: #192c46;
+	color: #FFF;
+	padding-top: 100px;
+	/* margin-bottom: -125px; */
+}
+
+.index__titulo {
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.index {
+		margin-bottom: 0;
+	}
+}
+
+/* Fim Index */
+
+/* Catálogo */
+.container {
+	background: #192c46;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 0 10%;
+	margin: 0;
+}
+
+@media (max-width: 768px) {
+	.container {
+		height: auto;
+	}
+}
+
+.card {
+	background: #08121E;
+	width: 210px;
+	height: 410px;
+	border-radius: 15px;
+	margin: 30px;
+	padding: 30px 20px;
+	transition: 0.5s;
+}
+
+.imgAnimes {
+	width: 173px;
+	height: 252px;
+	transition: 0.5s;
+	justify-content: center;
+	align-items: center;
+}
+
+.imgAnimes:hover {
+	transform: translateY(-20px);
+}
+
+.content {
+	padding: 10px;
+	text-align: center;
+}
+
+.content h3 {
+	color: #FFF;
+}
+/* Fim Catálogo */
+
+/* Contato */
+.form {
+	max-width: 600px;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.formulario {
+	margin-left: -15px;
+	margin-right: -15px;
+	padding: 40px 15px 40px 15px;
+	margin: 0;
+	font-size: 15px;
+}
+
+.formulario input {
+	font-size: 15px;
+}
+
+.formulario a {
+	text-decoration: none;
+	color: #4884DE;
+}
+
+.formulario a:hover {
+	transition: all 0.7s;
+	background: #dbdbdb;
+	border: 0 solid #dbdbdb;
+	border-radius: 3px;
+}
+
+.formulario__grupo {
+	margin-bottom: 15px;
+}
+
+.formulario__campo {
+	background-color: #ECF0F1;
+	color: rgb(26, 26, 26);
+	width: 100%;
+	border: 0;
+	border-radius: 5px;
+	padding: 10px 5px;
+	font-family: "Fira Code", sans-serif;
+	font-size: 15px;
+}
+
+.formulario__botao {
+	background-color: #4884DE;
+	color: #fff;
+	border: 1px solid #4884DE;
+	border-radius: 10px;
+	padding: 3px 30px;
+	font-family: "Fira Code", sans-serif;
+	cursor: pointer;
+	display: block;
+	margin: 0 auto;
+}
+
+.formulario__botao:hover {
+	border: 1px solid #4884DE;
+	background-color: #fff;
+	color: #4884DE;
+}
+/*  Fim Contato */
+
+/* Animes */
+.animes {
+	background: #192c46;
+	background-size: cover;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: auto;
+}
+
+.animes h1{
+	margin: 40px 0;
+	color: #FFF;
+	text-align: center;
+}
+
+.animes h4{
+	margin: 40px 0;
+	color: #FFF;
+	text-align: center;
+}
+
+.banner {
+	background-position: 50% 35%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 400px;
+	margin-top: -15px;
+}
+
+@media (max-width: 768px) {
+	.banner {
+		height: 210px;
+	}	
+}
+
+.animes__container {
+	max-width: 1920px;
+	margin: 0 auto;
+	color: #FFF;
+	text-align: center;
+}
+
+.animes__coluna {
+	margin: 0 auto;
+}
+
+.animes__img {
+	width: 200px;
+	height: 300px;
+	justify-content: center;
+	align-items: center;
+}
+
+.animes__descricao {
+	text-align: justify;
+	margin: 40px 20px;
+}
+
+.botao {
+	margin: 28px auto;
+	padding: 10px;
+	max-width: 50%;
+	background: tomato;
+	border-radius: 10px;
+	transition: 0.5s ease-in-out;
+	text-align: center;
+}
+
+.botao:hover {
+	background: chartreuse;
+}
+
+@media (min-width: 768px) {
+	.animes__coluna {
+    	float: left;
+    	width: 40%;
+    	padding: 0;
+	}
+	.animes__descricao {
+		margin: 0;
+	}
+	.botao {
+		max-width: 30%;
+	}
+}
+
+.fundo {
+	background: #192c46;
+	height: 88vh;
+}
+
+/* Fim Animes */
+
+/*
+@media (min-width: 576px) {
+	
+}
+@media (min-width: 768px) {
+	
+}
+@media (min-width: 992px) {
+	
+}
+@media (min-width: 1200px) {
+	
+}
+*/
+
+.form-group{
+	margin-bottom: 1rem;
+}
+
+.form-control{
+	background-color: #192c46;
+	color: rgb(26, 26, 26);
+	width: 100%;
+	border: 0;
+	border-radius: 5px;
+	padding: 10px 5px;
+	font-family: "Fira Code", sans-serif;
+	font-size: 15px;
+}

@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AniTrack - Anime</title>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
+	</head>
+
+	<body class="fundo">
+		<header>
+			<nav>
+				<a class="logo" href="{% url 'index' %}">Logo</a>
+				<div class="mobile-menu">
+					<div class="line1"></div>
+					<div class="line2"></div>
+					<div class="line3"></div>
+				</div>
+				<ul class="nav-list">
+					<li><a href="{% url 'index' %}">Home</a></li>
+					<li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+					<li><a href="{% url 'sobre' %}">Sobre</a></li>
+					<li><a href="{% url 'contatos' %}">Contato</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'profile' user.id %}">Favoritos</a></li>
+					{% endif %}
+					<li>
+						<div>
+							{% if user.is_authenticated %}
+							<a id="linklogin" class="login" href="{% url 'account_login' %}">{{user.username}}</a>
+							<li>
+							<a href="{% url 'account_logout' %}">Sair</a>
+							</li>
+							{% else %}
+							<a id="linklogin" class="login" href="{% url 'account_login' %}">Login</a>
+							{% endif %}
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		{% block content %}
+		<div class="animes">
+            <img class="banner" src="{{animes.banner.url}}">
+			<h1 class="animes__titutlo">{{animes.titulo_original}}</h1>
+            <div class="animes__container">
+				<div class="animes__coluna">
+					<img class="animes__img" src="{{ animes.imagens.url }}">
+				</div>
+				<div class="animes__coluna">
+					<p class="animes__descricao">
+						{{animes.descricao}}
+					</p>
+					<br>
+					{% if user.is_authenticated %}
+					<form method="POST">
+						{% csrf_token %}
+						{{ form.as_p }}
+						<input type="submit" class="botao" value="Adicionar">
+					{% endif %}
+					</form>
+					<!--<div class="botao">Adicionar na lista</div>-->
+				</div>
+			</div>
+		</div>
+        {% endblock %}
+        
+		<footer>
+			©
+			<script>
+				document.write(new Date().getFullYear())
+			</script> 
+			Copyright: AniTrack - Todos Direitos Reservados
+		</footer>
+		<script src="{% static 'js/mobile-navbar.js' %}"></script>
+		<script src="{% static 'js/home.js' %}"></script>
+	</body>
+</html>
