@@ -43,17 +43,26 @@
 			</nav>
 		</header>
 		<div class="container">
+			<font color="white">
+				<p>Lista de {{ user.username }}</p>
+			</font>
+		</div>
+		<div class="container">
 			{% for animes in animes %}
 			<div class="card">
+				<a href="{% url 'anime' animes.id %}">
 					<img class="imgAnimes" src="{{ animes.imagens.url }}">
 					<div class="content">
 						<h3>{{animes.titulo_original}}</h3>
+					</div>
+					<div class="botao">
+						<a href="{% url 'delete' animes.id %}">Remover</a>
 					</div>
 				</a>
 			</div>
 			{% empty %}
 			<tr>
-				<td colspan="3">Nenhuma atividade registrado.</td>
+				<td colspan="3" class="anime">Nenhuma atividade registrado.</td>
 			</tr>
 			{% endfor %}
 		</div>

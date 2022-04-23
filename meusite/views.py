@@ -82,3 +82,13 @@ def profile(request, pk):
 def view_404(request, exception):
     bank = Bank.objects.all()
     return render(request, 'meusite/index.html', {'bank':bank})
+
+def delete(request, pk):
+    opc = ListaUser.objects.filter(user_id=request.user.id, anime_id=pk).exists()
+
+    if opc == True:
+        task = get_object_or_404(ListaUser, user_id=request.user.id, anime_id=pk)
+        task.delete()
+        return redirect('/')
+    else:
+        return render(request, 'meusite/user.html', {'animes' : animes})
