@@ -15,18 +15,38 @@ def index(request):
 
 def anime(request, pk):
     animes = get_object_or_404(Bank, pk=pk)
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        
-        if form.is_valid():
-            task = form.save(commit=False)
-            task.user = request.user
-            task.anime = Bank.objects.get(pk=pk)
-            task.save()
-            return redirect('/')
+    opc = ListaUser.objects.filter(user_id=request.user.id, anime_id=pk).exists()
+
+    if opc == True:
+        task = get_object_or_404(ListaUser, user_id=request.user.id, anime_id=pk)
+        form = PostForm(instance=task)
+        if request.method == 'POST':
+            form = PostForm(request.POST, instance=task)
+            print(form)
+
+            if form.is_valid():
+                task.save()
+                return redirect('/')
+
+            else:
+                return render(request, 'meusite/animes.html', {'animes' : animes, 'form': form})
+        else:
+            return render(request, 'meusite/animes.html', {'animes' : animes, 'form': form})
     else:
+        print('a')
         form = PostForm()
-        return render(request, 'meusite/animes.html', {'animes' : animes, 'form': form})
+        if request.method == 'POST':
+            form = PostForm(request.POST)
+            
+            if form.is_valid():
+                task = form.save(commit=False)
+                task.user = request.user
+                task.anime = Bank.objects.get(pk=pk)
+                task.save()
+                return redirect('/')
+        else:
+            form = PostForm()
+            return render(request, 'meusite/animes.html', {'animes' : animes, 'form': form})
 
 def catalogo(request):
     bank = Bank.objects.all()
