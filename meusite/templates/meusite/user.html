@@ -43,20 +43,15 @@
 			</nav>
 		</header>
 		<div class="container">
-			<font color="white">
-				<p>Lista de {{ user.username }}</p>
-			</font>
-		</div>
-		<div class="container">
 			{% for animes in animes %}
 			<div class="card">
 				<a href="{% url 'anime' animes.id %}">
 					<img class="imgAnimes" src="{{ animes.imagens.url }}">
 					<div class="content">
-						<h3>{{animes.titulo_original}}</h3>
+						<p class="p1">{{animes.titulo_original}}</p>
 					</div>
-					<div class="botao">
-						<a href="{% url 'delete' animes.id %}">Remover</a>
+					<div>
+						<a class="botao" href="{% url 'delete' animes.id %}">Remover</a>
 					</div>
 				</a>
 			</div>

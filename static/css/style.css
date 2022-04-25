@@ -449,3 +449,31 @@ footer {
 	font-family: "Fira Code", sans-serif;
 	font-size: 15px;
 }
+
+p.p1{
+	max-width: 20ch;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: 30px;
+}
+
+.form-control {
+    background-color: #ffffff;
+    color: rgb(26, 26, 26);
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 5px;
+    font-family: "Fira Code", sans-serif;
+    font-size: 15px;
+}
+
+.cor {
+	color:#fff;
+	font-family: 'Fira Code', sans-serif;
+}
+
+IMG.displayed {
+    box-sizing: border-box;
+}

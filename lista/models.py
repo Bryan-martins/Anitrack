@@ -19,3 +19,6 @@ class ListaUser(models.Model):
     status = models.CharField(max_length=15, choices=STATUS, default='pa')
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     anime = models.ForeignKey(Bank ,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{} - {}'.format(self.user, self.anime)
