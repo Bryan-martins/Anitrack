@@ -56,9 +56,17 @@
 				</a>
 			</div>
 			{% empty %}
-			<tr>
-				<td colspan="3" class="anime">Nenhuma atividade registrado.</td>
-			</tr>
+			<main>
+				<br>
+				<br>
+				<br>
+	
+				<h1>Sua lista de animes está vazia :(</h1>
+				<div>
+					<br>
+					<a class="botao" href="{% url 'catalogo' %}">Ir para o catálogo</a>
+				</div>
+			</main>
 			{% endfor %}
 		</div>
 		<footer>
