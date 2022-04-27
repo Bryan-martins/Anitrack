@@ -62,16 +62,17 @@ def contatos(request):
     if request.method == 'POST':
         dice['nome'] = request.POST.get('nome')
         dice['email'] = request.POST.get('email')
+        dice['type'] = request.POST.get('type')
         dice['mensagem'] = request.POST.get('mensagem')
 
         send_mail(
             dice['nome'],
-            'Remetente: ' + dice['email'] + '\n\n' + dice['mensagem'],
+            'Remetente: ' + dice['email'] + '\n\n' + 'Tipo do Contato: ' + dice['type'] + '\n\n' + dice['mensagem'],
             '',
             # [settings.EMAIL_HOST_USER],
             [settings.EMAIL_BACKEND],
         )
-        print('Envio de Mensagem de Contato: Usuário '+request.user.username+' '+str(datetime.datetime.now()))
+        print('Envio de Mensagem de Contato: Remetente '+dice['email']+' '+str(datetime.datetime.now()))
         return redirect('/')
     return render(request, 'meusite/contatos.html', dice)
 
