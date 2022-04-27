@@ -474,6 +474,9 @@ p.p1{
 	font-family: 'Fira Code', sans-serif;
 }
 
-IMG.displayed {
-    box-sizing: border-box;
+.add {
+	width: 320px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
 }
